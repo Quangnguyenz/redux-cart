@@ -8,19 +8,32 @@ import cartItems from "./cart-items";
 
 import { createStore } from 'redux'
 
-// reducer
-function reducer(state, action) {
-  console.log('abc')
+// store.getState()
+
+// initial store
+const initialStore = {
+  count: 78
 }
 
-const store = createStore(reducer);
+// reducer
+function reducer(state, action) {
+  console.log({ state, action })
+  if (action.type === "DECREASE") {
+    console.log('action activate')
+  }
+}
+
+
+const store = createStore(reducer, initialStore);
+store.dispatch({ type: 'DECEASE' })
+console.log(store.getState())
 
 function App() {
   // cart setup
 
   return (
     <main>
-      <Navbar />
+      <Navbar cart={store.getState()} />
       <CartContainer cart={cartItems} />
     </main>
   );
