@@ -12,20 +12,30 @@ import { createStore } from 'redux'
 
 // initial store
 const initialStore = {
-  count: 78
+  count: 0
 }
 
 // reducer
 function reducer(state, action) {
   console.log({ state, action })
   if (action.type === "DECREASE") {
-    console.log('action activate')
+    return { count: state.count - 1 }
   }
+  if (action.type === "INCREASE") {
+    return { count: state.count + 1 }
+  }
+  if (action.type === "RESET") {
+    return { count: 0 }
+  }
+  return state
 }
 
 
 const store = createStore(reducer, initialStore);
-store.dispatch({ type: 'DECEASE' })
+store.dispatch({ type: "DECREASE" })
+store.dispatch({ type: "INCREASE" })
+store.dispatch({ type: "INCREASE" })
+store.dispatch({ type: "RESET" })
 console.log(store.getState())
 
 function App() {
