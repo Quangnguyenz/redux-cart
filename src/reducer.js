@@ -8,9 +8,13 @@ function reducer(state, action) {
         console.log('decreased')
     }
     if (action.type === INCREASE) {
-        console.log('increased')
+        let tempCart = state.cart.map((cartItem) => {
+            if (cartItem)
+        })
+        return { ...state, cart:}
+        // console.log('increased')
     } if (action.type === REMOVE) {
-        console.log('remove')
+        return { ...state, cart: state.cart.filter(item => item.id !== action.payload.id) }
     }
     return state
 }
