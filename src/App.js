@@ -18,7 +18,6 @@ const initialStore = {
 }
 
 
-
 const store = createStore(reducer, initialStore);
 
 
